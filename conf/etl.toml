@@ -1,0 +1,33 @@
+# 增量ETL配置段
+[IncrementEtl]
+  StartFile = "" # 开始同步的binlog文件
+  StartPosition = 0 # 开始同步的binlog位置
+  ServerId = 100 # 同步slave的serverId，只要不与master serverId相同即可
+
+# 全量ETL配置段
+[FullEtl]
+  # mysql数据导出存放文件夹
+  OutFileDir = "/tmp/mysql-files/"
+
+# 全量ETL规则，Schema: 数据库， Tables: table数组
+# eg: 导出整个库的表 tables=["*"]，导出特定的表 tables=["test1", "test2"]
+[[Rule]]
+  Schema = "test"
+  Tables = ["user"]
+[[Rule]]
+  Schema = "test1"
+  Tables = ["*"]
+
+# mysql 数据库配置
+[Source]
+  Host = "127.0.0.1"
+  Port = 3306
+  User = "root"
+  Pwd = "123456"
+
+# mariadb columnStore 数据库配置
+[Target]
+  Host = "127.0.0.1"
+  Port = 3307
+  User = "root"
+  Pwd = "123456"
