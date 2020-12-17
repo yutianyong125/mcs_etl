@@ -1,4 +1,4 @@
-#简介
+# 简介
 
 mysql -> mariadb columnStore的同步工具，支持全量同步和增量同步。
 mariadb是mysql的社区开源版，columnStore则是mariadb的插件式的列式存储引擎。
